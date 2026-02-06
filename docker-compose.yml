@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: erp_nectux_db
+    restart: always
+    environment:
+      POSTGRES_DB: erp_nectux
+      POSTGRES_USER: erp_user
+      POSTGRES_PASSWORD: erp_pass
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5465:5432"
+
+  app:
+    build: .
+    container_name: erp_nectux_app
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DB_DEFAULT_URL: jdbc:postgresql://db:5432/erp_nectux
+      DB_DEFAULT_USER: erp_user
+      DB_DEFAULT_PASSWORD: erp_pass
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    command: ["./gradlew", "bootRun"]
+
+volumes:
+  pgdata:
