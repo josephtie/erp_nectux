@@ -20,10 +20,6 @@ services:
     restart: always
     depends_on:
       - db
-    environment:
-      DB_DEFAULT_URL: jdbc:postgresql://db:5432/erp_nectux
-      DB_DEFAULT_USER: axelor
-      DB_DEFAULT_PASSWORD: axelor
     ports:
       - "8010:8080"
     volumes:
