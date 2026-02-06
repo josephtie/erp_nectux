@@ -10,7 +10,7 @@ services:
       POSTGRES_USER: axelor
       POSTGRES_PASSWORD: axelor
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata_Org:/var/lib/postgresql/data
     ports:
       - "5465:5432"
 
@@ -21,10 +21,8 @@ services:
     depends_on:
       - db
     ports:
-      - "8010:8080"
-    volumes:
-      - .:/app
+      - "8010:8080"  
     command: ["./gradlew", "bootRun"]
 
 volumes:
-  pgdata:
+  pgdata_Org:
