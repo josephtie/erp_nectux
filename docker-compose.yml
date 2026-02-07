@@ -10,7 +10,7 @@ services:
       POSTGRES_USER: axelor
       POSTGRES_PASSWORD: axelor
     volumes:
-      - pgdata_Org:/var/lib/postgresql/data
+      - pgdata_Orgs:/var/lib/postgresql/data
     ports:
       - "5465:5432"
 
@@ -24,4 +24,4 @@ services:
       - "8010:8080"
 
 volumes:
-  pgdata_Org:
+  pgdata_Orgs:
