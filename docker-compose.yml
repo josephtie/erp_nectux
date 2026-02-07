@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   db:
-    image: postgres:15
+    image: postgres:14
     container_name: erp_nectux_db
     restart: always
     environment:
@@ -21,8 +21,7 @@ services:
     depends_on:
       - db
     ports:
-      - "8010:8080"  
-    command: ["./gradlew", "bootRun"]
+      - "8010:8080"
 
 volumes:
   pgdata_Org:
